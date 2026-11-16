@@ -1,0 +1,23 @@
+.email-address{font-size:12px;color:var(--muted);overflow-wrap:anywhere;line-height:1.8}
+.bio .email-address{margin-top:22px;margin-bottom:5px}
+.intro-heading{display:flex;flex-direction:column;align-items:center;align-self:center;text-align:center}
+.intro-heading h1{font-size:32px;letter-spacing:-.8px;margin:16px 0 10px}
+.intro-heading .eyebrow{font-size:9px;letter-spacing:1.3px}
+.portrait{width:160px;aspect-ratio:1;overflow:hidden;border-radius:50%;flex-shrink:0}
+.portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 60%;transform:scale(1.5);transform-origin:50% 65%}
+@media(max-width:760px){.intro{gap:26px}.portrait{width:140px}.intro-heading h1{font-size:30px;margin:14px 0 10px}.intro-heading .eyebrow{margin-bottom:0}}
+.author-legend{font-size:11px;color:var(--muted);margin:13px 0 0}
+.authors sup{font-size:10px;line-height:0;color:var(--blue);margin-left:1px}
+.awards{max-width:810px}
+.awards [lang="zh"]{color:var(--muted);font-size:12px}
+.awards time{flex-shrink:0}
+@media(max-width:520px){footer{flex-direction:column}.footer-meta{text-align:left}.news-items p{grid-template-columns:62px 1fr}.awards li{align-items:baseline}.awards [lang="zh"]{font-size:11px}}
+.paper-figure{display:flex;flex-direction:column;align-self:center;justify-content:center;gap:8px;margin-top:0;color:var(--muted);font-size:10px;text-align:center}
+.paper-figure img{display:block;width:100%;height:auto;object-fit:contain}
+.timeline article{grid-template-columns:96px minmax(0,1fr) max-content;gap:20px;align-items:center}
+.org-logo{width:40px;height:40px;object-fit:contain;display:block;grid-column:1;grid-row:1;justify-self:center}
+.seed-logo{width:96px;height:auto}
+.timeline article>div{grid-column:2;grid-row:1}
+.timeline time{padding-top:0;grid-column:3;grid-row:1;text-align:right;justify-self:end;white-space:nowrap}
+@media(max-width:760px){.paper{grid-template-columns:185px 1fr}.timeline article{grid-template-columns:84px minmax(0,1fr) max-content;gap:15px}.org-logo{width:36px;height:36px}.seed-logo{width:84px;height:auto}.timeline time{font-size:11px}}
+@media(max-width:520px){.paper{grid-template-columns:1fr}.paper-figure{width:100%;max-width:350px;margin:0 auto}.paper-figure-unavailable{display:none}.timeline article{grid-template-columns:74px minmax(0,1fr);gap:5px 15px}.org-logo{grid-column:1;grid-row:1 / 3}.seed-logo{width:74px;height:auto}.timeline article>div{grid-column:2;grid-row:1}.timeline time{grid-column:2;grid-row:2;justify-self:end;text-align:right}}

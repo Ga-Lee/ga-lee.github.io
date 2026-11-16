@@ -1,0 +1,12 @@
+{
+  "seed.png": {"source":"https://manipulation-as-in-simulation.github.io/seed/seed_logo.png","page":"https://manipulation-as-in-simulation.github.io/","note":"ByteDance Seed team project page; full Seed-specific lockup, original proportions."},
+  "bytedance.png": {"source":"https://lf3-static.bytednsdoc.com/obj/eden-cn/shjpmmv_ljuhklafi/ljhwZthlaukjlkulzlp/images/Pn04bTfD5oKbB3x1NFLcQ3Bxn1b-20261029135132-20261029150506.png","page":"https://www.bytedance.com/en/","size":[300,300],"note":"Official website icon, verified visually; suitable for square logo slot."},
+  "bytedance-seed.png": {"source":"https://seed.bytedance.com/en/","extraction":"Unmodified base64 PNG from img#nav-logo in official page HTML","size":[720,96]},
+  "hkust-gz.png": {"source":"https://material.hkust-gz.edu.cn/wp-content/uploads/2023/04/cropped-favicon-1-1-192x192.png","page":"https://www.hkust-gz.edu.cn/","size":[192,192]},
+  "kuaishou.png": {"source":"https://s2-10623.kwimgs.com/udata/pkg/cloudcdn/static/media/logo-black@2x.23adce5c.png","page":"https://www.kuaishou.com/en","size":[432,80],"note":"Official orange camera icon plus English wordmark; keep full proportions."},
+  "kuaishou-icon.ico": {"source":"https://www.kuaishou.com/favicon.ico","size":[32,32],"note":"Official icon; lower resolution than wordmark PNG."},
+  "hku.png": {"source":"https://www.hku.hk/etc.clientlibs/hkucms/clientlibs/clientlib-site/resources/icon-192x192.png","page":"https://www.hku.hk/","size":[192,192]},
+  "pku.png": {"source":"https://www.pku.edu.cn/pku_logo_red.png","page":"https://www.pku.edu.cn/","size":[360,360]},
+  "whu.png": {"source":"https://www.whu.edu.cn/new2024/images/favicon.png","page":"https://www.whu.edu.cn/","size":[734,734]},
+  "verification":"All PNG files visually checked. All marks sourced from their institution's official website or its linked CDN. No redraw, recoloring, or cropping. Retrieved 2026-11-16."
+}
