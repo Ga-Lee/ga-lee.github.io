@@ -1,15 +1,14 @@
 (() => {
-  const gallery = document.getElementById('life-gallery');
-  if (!gallery) return;
-  const cards = [...gallery.querySelectorAll('.life-card')];
-  const buttons = [...document.querySelectorAll('[data-cat]')];
-  const prev = document.getElementById('gallery-prev');
-  const next = document.getElementById('gallery-next');
+  const photos = [
+    {pet:'laifu', name:'Laifu', src:'assets/life/laifu-closeup.jpg', caption:'A little closer', alt:'Laifu, a striped tabby cat, looking closely at the camera'},
+    {pet:'laifu', name:'Laifu', src:'assets/life/laifu-headpats.jpg', caption:'Head pats', alt:'Laifu being held and gently patted on the head'},
+    {pet:'qiuqiu', name:'Qiuqiu', src:'assets/life/qiuqiu-sunset.jpg', caption:'Golden-hour walk', alt:'Qiuqiu standing in the grass with palm trees and a golden sunset behind'},
+    {pet:'qiuqiu', name:'Qiuqiu', src:'assets/life/qiuqiu-desk.jpg', caption:'Desk companion', alt:'Qiuqiu in a yellow shirt standing beside a laptop'}
+  ];
   const dialog = document.getElementById('photo-dialog');
   const full = document.getElementById('photo-full');
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let activeCards = cards;
-  let viewerCards = cards;
+  if (!dialog) return;
+  let viewerCards = photos;
   let index = 0;
   let opener;
   const introductions = {
@@ -20,54 +19,17 @@
   introduction.id = 'photo-introduction';
   dialog.querySelector('figure').after(introduction);
 
-  function updateArrows() {
-    prev.disabled = gallery.scrollLeft <= 2;
-    next.disabled = gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 2;
-  }
-  function scrollGallery(direction) {
-    const step = activeCards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(gallery).gap);
-    gallery.scrollBy({left: direction * step, behavior: reducedMotion.matches ? 'instant' : 'smooth'});
-  }
-  prev.addEventListener('click', () => scrollGallery(-1));
-  next.addEventListener('click', () => scrollGallery(1));
-  gallery.addEventListener('scroll', updateArrows, {passive: true});
-  new ResizeObserver(updateArrows).observe(gallery);
-  gallery.addEventListener('keydown', event => {
-    if (event.target !== gallery) return;
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      event.preventDefault();
-      scrollGallery(event.key === 'ArrowRight' ? 1 : -1);
-    }
-  });
-  buttons.forEach(button => button.addEventListener('click', () => {
-    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    cards.forEach(card => { card.hidden = button.dataset.cat !== 'all' && card.dataset.pet !== button.dataset.cat; });
-    activeCards = cards.filter(card => !card.hidden);
-    gallery.scrollTo({left: 0, behavior: 'instant'});
-    document.getElementById('gallery-status').textContent = `${activeCards.length} photos`;
-    updateArrows();
-  }));
-
   function showPhoto(position) {
     index = (position + viewerCards.length) % viewerCards.length;
     const card = viewerCards[index];
-    full.src = card.href;
-    full.alt = card.querySelector('img').alt;
-    introduction.textContent = introductions[card.dataset.pet] || '';
-    document.getElementById('photo-caption').textContent = `${card.querySelector('strong').textContent} — ${card.querySelector('.life-caption span').textContent}`;
+    full.src = card.src;
+    full.alt = card.alt;
+    introduction.textContent = introductions[card.pet] || '';
+    document.getElementById('photo-caption').textContent = `${card.name} — ${card.caption}`;
     document.getElementById('photo-count').textContent = `${index + 1} / ${viewerCards.length}`;
   }
-  cards.forEach(card => card.addEventListener('click', event => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || typeof dialog.showModal !== 'function') return;
-    event.preventDefault();
-    opener = card;
-    viewerCards = activeCards;
-    showPhoto(activeCards.indexOf(card));
-    dialog.showModal();
-    document.documentElement.classList.add('photo-viewer-open');
-  }));
   document.addEventListener('cat-photo', event => {
-    viewerCards = cards.filter(card => card.dataset.pet === event.detail.pet);
+    viewerCards = photos.filter(photo => photo.pet === event.detail.pet);
     if (!viewerCards.length) return;
     opener = event.detail.opener;
     showPhoto(0);
@@ -100,5 +62,4 @@
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showPhoto(index + (dx < 0 ? 1 : -1));
     touchStart = null;
   }, {passive: true});
-  updateArrows();
 })();
