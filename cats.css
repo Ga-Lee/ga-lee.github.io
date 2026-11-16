@@ -1,0 +1,37 @@
+.cat-playground{position:relative;height:210px;margin:20px 0 24px;border:1px solid #e6ebe7;border-radius:10px;background:#f8faf7;overflow:hidden;font-family:var(--sans)}
+.cat-playground:focus{outline:none}
+.cat-heading{position:absolute;left:14px;top:18px;font-size:11px;color:#718076;letter-spacing:.3px}
+.cat-ground{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,transparent,#d4ddd7 25%,#d4ddd7 75%,transparent);opacity:.65}
+.cat-pet{position:absolute;left:0;bottom:4px;width:106px;height:96px;padding:0;border:0;background:none;cursor:pointer;pointer-events:auto;will-change:transform;color:#4b585b}
+.cat-pet:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:20px}
+.cat-name{position:absolute;bottom:91px;left:0;width:100%;font-size:10px;letter-spacing:.3px;text-align:center;opacity:0;transform:translateY(3px);transition:.2s;pointer-events:none}
+.cat-pet:hover .cat-name,.cat-pet:focus-visible .cat-name{opacity:1;transform:none}
+.cat-mirror,.cat-drawing{display:block;width:100%;height:100%;transform-origin:50% 75%}
+.cat-drawing{overflow:visible;filter:drop-shadow(0 2px 2px #fff9)}
+.cat-tail{transform-origin:40px 70px;animation:tail-sway 3s ease-in-out infinite alternate}
+.cat-eye{transform-origin:center;transform-box:fill-box;animation:cat-blink 5.6s infinite}
+.cat-pet[data-pet="qiuqiu"] .cat-eye{animation-delay:1.3s}
+.cat-pet[data-state="walk"] .cat-leg-front,.cat-pet[data-state="run"] .cat-leg-front{transform-origin:77px 68px;animation:cat-step .38s ease-in-out infinite alternate}
+.cat-pet[data-state="walk"] .cat-leg-back,.cat-pet[data-state="run"] .cat-leg-back{transform-origin:46px 68px;animation:cat-step .38s ease-in-out infinite alternate-reverse}
+.cat-pet[data-state="run"] .cat-leg-front,.cat-pet[data-state="run"] .cat-leg-back{animation-duration:.16s}
+.cat-pet[data-state="run"] .cat-drawing{animation:cat-bounce .32s ease-in-out infinite}
+.cat-pet[data-state="roll"] .cat-drawing{animation:cat-roll 1.1s ease-in-out}
+.cat-pet[data-state="pounce"] .cat-drawing{animation:cat-pounce .75s ease-in-out}
+.cat-pet[data-state="sit"] .cat-tail{animation-duration:1.1s}
+.cat-toy{position:absolute;bottom:21px;left:0;width:18px;height:18px;border-radius:50%;background:#bd8174;border:2px solid #8f6359;box-shadow:inset 4px -3px 0 #dba596;opacity:0;transition:opacity .2s;pointer-events:none}
+.cat-toy::after{content:"";position:absolute;width:24px;height:13px;border-bottom:1px solid #9d887d;border-radius:50%;left:12px;top:2px;transform:rotate(-25deg)}
+.cat-toy.visible{opacity:1}
+.cat-controls{position:absolute;right:14px;top:12px;display:flex;align-items:center;gap:6px;pointer-events:auto}
+.cat-controls button{border:1px solid #dce2e5;background:#fffffff2;box-shadow:0 2px 10px #24303b08;color:#576770;border-radius:18px;font:11px var(--sans);padding:7px 10px;cursor:pointer}
+.cat-help{position:absolute;left:14px;top:48px;max-width:350px;color:#54646c;font-size:11px;line-height:1.7;pointer-events:none}
+.cat-help[hidden]{display:none}
+.cat-playground.is-collapsed{height:52px}
+.cat-playground.is-collapsed .cat-pet,.cat-playground.is-collapsed .cat-toy,.cat-playground.is-collapsed .cat-ground{display:none}
+@keyframes cat-step{from{transform:rotate(-13deg)}to{transform:rotate(13deg)}}
+@keyframes tail-sway{from{transform:rotate(-8deg)}to{transform:rotate(12deg)}}
+@keyframes cat-blink{0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.12)}}
+@keyframes cat-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes cat-roll{0%{transform:rotate(0)}22%{transform:translateY(3px) rotate(-30deg)}75%{transform:translateY(-4px) rotate(330deg)}100%{transform:rotate(360deg)}}
+@keyframes cat-pounce{0%,100%{transform:translateY(0) rotate(0)}40%{transform:translateY(-32px) rotate(-12deg)}75%{transform:translateY(-5px) rotate(8deg)}}
+@media(max-width:520px){.cat-pet{width:82px;height:76px}.cat-name{bottom:72px}.cat-controls{right:10px}.cat-help{left:12px;max-width:270px;font-size:10px}.cat-playground{height:210px}}
+@media(prefers-reduced-motion:reduce){.cat-playground *{animation:none!important;transition:none!important}.cat-pet{will-change:auto}}
