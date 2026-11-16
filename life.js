@@ -12,6 +12,13 @@
   let viewerCards = cards;
   let index = 0;
   let opener;
+  const introductions = {
+    laifu: 'Meet Laifu (来福), my round-faced tabby with bold charcoal stripes and big, bright eyes. A few little moments from life together.',
+    qiuqiu: 'Meet Qiuqiu (秋秋), my silver-coated cat with delicate ears and a little necklace. Here are a few moments, from golden-hour walks to keeping me company at my desk.'
+  };
+  const introduction = document.createElement('p');
+  introduction.id = 'photo-introduction';
+  dialog.querySelector('figure').after(introduction);
 
   function updateArrows() {
     prev.disabled = gallery.scrollLeft <= 2;
@@ -46,6 +53,7 @@
     const card = viewerCards[index];
     full.src = card.href;
     full.alt = card.querySelector('img').alt;
+    introduction.textContent = introductions[card.dataset.pet] || '';
     document.getElementById('photo-caption').textContent = `${card.querySelector('strong').textContent} — ${card.querySelector('.life-caption span').textContent}`;
     document.getElementById('photo-count').textContent = `${index + 1} / ${viewerCards.length}`;
   }

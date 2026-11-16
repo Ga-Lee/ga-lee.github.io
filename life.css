@@ -29,6 +29,7 @@
 #photo-dialog figure{margin:0;text-align:center}
 #photo-full{display:block;width:100%;height:min(66dvh,700px);object-fit:contain;touch-action:pan-y}
 #photo-caption{font-size:13px;margin-top:12px;color:#e1e6e9}
+#photo-introduction{max-width:620px;margin:12px auto 4px;text-align:center;font-size:12px;line-height:1.7;color:#b8c6cc}
 .lightbox-navigation{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:12px}
 .lightbox-navigation span{font-size:11px;color:#aebcc6}
 html.photo-viewer-open{overflow:hidden}
